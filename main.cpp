@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdio>
+#include <cstdlib>
 using namespace std;
 
 // Treap implementation (only <iostream> and <cstdio> are used)
@@ -105,7 +106,6 @@ int predecessor_node(int cur, int key) {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    srand(71268726);
     int n;
     if(!(cin>>n)) return 0;
     long long cur_floor = 0;
