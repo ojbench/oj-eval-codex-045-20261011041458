@@ -11,10 +11,18 @@ struct TreapNode {
 int node_cnt = 0;
 int root = 0;
 
+// Simple deterministic pseudo‑random generator for treap priorities
+static unsigned int rng_state = 71268726u;
+static unsigned int next_rand() {
+    // Linear congruential generator (glibc parameters)
+    rng_state = rng_state * 1103515245u + 12345u;
+    return rng_state;
+}
+
 int new_node(int key) {
     ++node_cnt;
     nodes[node_cnt].key = key;
-    nodes[node_cnt].pri = (unsigned int)rand();
+    nodes[node_cnt].pri = next_rand();
     nodes[node_cnt].left = nodes[node_cnt].right = 0;
     return node_cnt;
 }
@@ -126,4 +134,3 @@ int main() {
     }
     return 0;
 }
-
